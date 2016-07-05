@@ -19,23 +19,16 @@
     <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-<!-- Always shows a header, even in smaller screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
-            <!-- Title -->
             <span class="mdl-layout-title">TDC Chat</span>
-            <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
-            <!-- Navigation. We hide it in small screens. -->
             <nav class="mdl-navigation mdl-layout--large-screen-only">
-                <a class="mdl-navigation__link" href="https://firebase.google.com/">Firebase</a>
-                <a class="mdl-navigation__link" href="https://getmdl.io/components/">MDL</a>
-                <a class="mdl-navigation__link" href="http://www.tiagogouvea.com.br">Tiago Gouvêa</a>
-            </nav>
 
+                <a class="mdl-navigation__link  about" href="">Sobre</a>
+            </nav>
             <div class="wrapper">
-                <!-- Right aligned menu below button -->
                 <button id="button-users" style="display: none;" class="mdl-button mdl-js-button mdl-button--icon">
                     <i class="material-icons">people</i>
                 </button>
@@ -47,23 +40,19 @@
         <nav class="mdl-navigation">
             <a class="mdl-navigation__link" target="_blank" href="https://firebase.google.com/">Firebase</a>
             <a class="mdl-navigation__link" target="_blank" href="https://getmdl.io/components/">MDL</a>
-            <a class="mdl-navigation__link" target="_blank" href="http://www.tiagogouvea.com.br">Tiago Gouvêa</a>
-            <!--https://github.com/TiagoGouvea/firebase-tdc-chat-->
+            <a class="mdl-navigation__link" target="_blank" href="https://github.com/TiagoGouvea/firebase-tdc-chat">GitHub Repo</a>
+            <a class="mdl-navigation__link" target="_blank" href="http://www.tiagogouvea.com.br">@TiagoGouvea</a>
+            <!---->
         </nav>
     </div>
     <main class="mdl-layout__content">
         <div class="page-content">
-
             <div class="mdl-cell mdl-cell--12-col">
-
                 <div id="div-must-auth" style="display:none;">
-                    <!-- Square card -->
-
                     <div class="snippet-group">
                         <div class="snippet-header">
                             <div class="snippet-demos">
                                 <div class="snippet-demo-padding"></div>
-
                                 <div class="snippet-demo">
                                     <div class="snippet-demo-container demo-card demo-card__square">
                                         <div class="demo-card-square mdl-card mdl-shadow--2dp">
@@ -81,7 +70,6 @@
                                                 </button>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                                 <div class="snippet-demo-padding"></div>
@@ -161,20 +149,39 @@
             </div>
         </div>
     </main>
+
+    <dialog class="mdl-dialog">
+        <h4 class="mdl-dialog__title">TDC Chat</h4>
+        <div class="mdl-dialog__content">
+            <p>
+                Simples exemplo de utilização do Firebase criado por Tiago Gouvêa para apresentação no TDC São Paulo 2016.<br><br>
+
+                Links uteis:<br>
+                <a target="_blank" href="https://github.com/TiagoGouvea/firebase-tdc-chat">Repositório no GitHub</a><br>
+                <a target="_blank" href="http://www.tiagogouvea.com.br">Blog de Tiago Gouvêa</a><br><br>
+
+                <a target="_blank" href="https://firebase.google.com/">Firebase</a><br>
+                <a target="_blank" href="https://getmdl.io/components/">Materia Design Lite (MDL)</a><Br>
+
+            </p>
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button close">OK</button>
+        </div>
+    </dialog>
 </div>
 
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
 <script>
     // Initialize Firebase
-    var config = {
-        apiKey: "",
-        authDomain: "",
-        databaseURL: "",
-        storageBucket: "",
-    };
-    firebase.initializeApp(config);
-</script>
+//    var config = {
+//        apiKey: "",
+//        authDomain: "",
+//        databaseURL: "",
+//        storageBucket: "",
+//    };
+//    firebase.initializeApp(config);
 </script>
 </body>
 </html>
