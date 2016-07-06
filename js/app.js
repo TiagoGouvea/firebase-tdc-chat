@@ -5,15 +5,15 @@ $(document).ready(function () {
     var loggedUser;
 
     firebase.auth().onAuthStateChanged(function (user) {
-        if (user == undefined || user == null || user.displayName == undefined)
-            return;
+        // if (user == undefined || user == null || user.displayName == undefined)
+        //     return;
         loggedUser = user;
-        console.log('firebase.auth..onAuthStateChanged > user', user);
+        console.log('firebase.auth.onAuthStateChanged > user', user);
         if (user == null) {
             $('#div-must-auth').show(400);
         } else {
             $('#div-must-auth').hide(200);
-            //loggedIn(user);
+            loggedIn(user);
         }
     });
 
@@ -22,7 +22,7 @@ $(document).ready(function () {
         provider.addScope('user');
         firebase.auth().signInWithPopup(provider).then(function (result) {
             console.log('firebase.auth.signInWithPopup > user', result.user);
-            //loggedIn(result.user);
+            loggedIn(result.user);
         }).catch(function (error) {
             console.log('error', error);
             alert(error.message);
@@ -32,8 +32,8 @@ $(document).ready(function () {
 
     function loggedIn(user) {
         writeUserData(user.uid, user.displayName, user.photoURL);
-        // startChat();
-        // setPresence();
+        startChat();
+        setPresence();
     }
 
     function writeUserData(userId, displayName, photoUrl) {
@@ -49,7 +49,8 @@ $(document).ready(function () {
         var connectedRef = firebase.database().ref('.info/connected');
 
         connectedRef.on('value', function (snap) {
-            setSendEnabled(snap.val() === true);
+            //setSendEnabled(snap.val() === true);
+            setSendEnabled(true);
             if (snap.val() === true) {
                 console.log('connectedRef.on > value', 'conected');
                 var con = presenceRef.push(true);
@@ -85,10 +86,10 @@ $(document).ready(function () {
         if (messagesRef != undefined)
             return;
 
-        messagesRef = firebase.database().ref('messages/');
+
 
         setSendEnabled(true);
-        return;
+        // return;
 
         function addMessage(key, message) {
             if ($('#li-message-' + key).length) return;
@@ -104,6 +105,8 @@ $(document).ready(function () {
         function delMessage(key) {
             $('#li-message-' + key).hide(1000);
         }
+
+        messagesRef = firebase.database().ref('messages/');
 
         messagesRef.limitToFirst(1).on('value', function (snapshot) {
             console.log('messagesRef.limitToFirst(1).on > value', snapshot.val());

@@ -1,5 +1,7 @@
 # firebase-tdc-chat
 
-Simples exemplo de como implementar um Chat usando Firebase + JavaScript, jQuery e MDL (Material Design Lite) 
+[Live demo](https://tdcchat2016.firebaseapp.com/)
+
+Simples exemplo de como implementar um Chat com JavaScript usando [Firebase](http://www.firebase.com) + [jQuery](https://jquery.com/) e [MDL (Material Design Lite)](https://getmdl.io/). 
 
 Tentei usar o mínimo de recursos para faciltar o entendimento, sem precisar de ferramentas extras nem nada além da sua IDE favorita.
