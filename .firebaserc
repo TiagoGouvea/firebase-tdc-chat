@@ -1,6 +1,5 @@
 {
   "projects": {
-    "default": "tdcchat2016",
-    "prototype": "tdcchat2016"
+    "default": "tdcchat2016-fe9cc"
   }
 }

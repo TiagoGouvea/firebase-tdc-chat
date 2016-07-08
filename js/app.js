@@ -1,12 +1,13 @@
 $(document).ready(function () {
+    // Este código foi escrito de forma a ser fácil de ser explicado
+    // por isso as coisas podem parecer fora do lugar, mas é para ser
+    // apresentado mais facilmente
 
     //****************** Auth ******************
 
     var loggedUser;
 
     firebase.auth().onAuthStateChanged(function (user) {
-        // if (user == undefined || user == null || user.displayName == undefined)
-        //     return;
         loggedUser = user;
         console.log('firebase.auth.onAuthStateChanged > user', user);
         if (user == null) {
@@ -33,7 +34,7 @@ $(document).ready(function () {
     function loggedIn(user) {
         writeUserData(user.uid, user.displayName, user.photoURL);
         startChat();
-        setPresence();
+        setPresence(user);
     }
 
     function writeUserData(userId, displayName, photoUrl) {
@@ -43,9 +44,9 @@ $(document).ready(function () {
         });
     }
 
-    function setPresence() {
-        var presenceRef = firebase.database().ref('users/' + loggedUser.uid + '/connections');
-        var lastOnlineRef = firebase.database().ref('users/' + loggedUser.uid + '/lastOnline');
+    function setPresence(user) {
+        var presenceRef = firebase.database().ref('users/' + user.uid + '/connections');
+        var lastOnlineRef = firebase.database().ref('users/' + user.uid + '/lastOnline');
         var connectedRef = firebase.database().ref('.info/connected');
 
         connectedRef.on('value', function (snap) {
@@ -85,8 +86,6 @@ $(document).ready(function () {
 
         if (messagesRef != undefined)
             return;
-
-
 
         setSendEnabled(true);
         // return;
@@ -134,7 +133,7 @@ $(document).ready(function () {
             body: message
         };
         var newMessageKey = firebase.database().ref('messages/').push(data, function (data) {
-            console.log('database.ref.push >',data);
+            console.log('database.ref.push >', data);
         });
         $('#input-message').attr("disabled", false);
         $('#input-message').val('');
@@ -188,19 +187,17 @@ $(document).ready(function () {
     //**************** About ********************
     var dialog = document.querySelector('dialog');
     var showDialogButton = document.querySelector('#a-about');
-    if (! dialog.showModal) {
+    if (!dialog.showModal) {
         dialogPolyfill.registerDialog(dialog);
     }
     console.log($('.about'));
-    $('.about').click(function(e){
+    $('.about').click(function (e) {
         e.preventDefault();
         dialog.showModal();
     });
-    dialog.querySelector('.close').addEventListener('click', function() {
+    dialog.querySelector('.close').addEventListener('click', function () {
         dialog.close();
     });
-
-
 
 
 });
